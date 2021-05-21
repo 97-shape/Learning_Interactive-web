@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<title>test</title>
+		<style>
+			body{
+				position: relative;
+				background-color: black;
+				cursor: none;
+			}
+			h1{
+				color: #ffff;
+			}
+			.cursor_item{
+				position: fixed;
+				width: 100px;
+				height: 100px;
+				background-color : red;
+				top: 0;
+				left: 0;
+				/* transition: CSS 속성을 변경할 때 애니메이션 속도를 조절 */
+				/* cubic-bezier: transition / transition-timing-function 속성에서 전환 시작과 끝까지의 효과를 제어
+				전환 시작과 끝까지의 효과 = 베지어곡선
+				부드러운 곡선을 모델링하기 위해 컴퓨터 그래픽에서 널리 사용
+				easing 값 테스트 사이트 : https://matthewlein.com/tools/ceaser*/
+				transition: all .5s cubic-bezier(0.815, 0.020, 0.300, 1.005);
+			}
+			button{
+				font-size: 40px;
+				font-weight: bold;
+				background: #ffff;
+				color: red;
+				padding: 30px 80px;
+				margin: 50px;
+				cursor: pointer;
+				/* transiton-property = 적용할 속성 선택*/
+				transition: all .5s;
+			}
+			button:hover{
+				background: red;
+				color: #fff;
+				font-size: 100px;
+				padding: 80px 120px;
+			}
+		</style>
+		<script>
+			let cursor_item;
+			let x = 0;
+			let y = 0;
+			
+			// 화면 로드가 완료되었을때
+			window.onload = function(){
+				let h1 = document.getElementsByTagName("h1")[0];
+				cursor_item = document.getElementsByClassName("cursor_item")[0];
+				window.addEventListener("click", mouseFunc, false);
+				
+				function mouseFunc(e){
+					x = e.clientX;
+					y = e.clientY;
+					cursor_item.style.transform = "translate(" + x + "px, " + y + "px)";
+				}
+				loop();
+			}
+		</script>
+	</HEAD>
+	<body>
+		<div class="cursor_item"></div>
+		<button type="button">START</button>
+	</body>
+</HTML>
