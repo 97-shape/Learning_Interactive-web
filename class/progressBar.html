@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>스크롤</title>
+		<style>
+			body{
+				height: 10000px;
+				/*
+				linear-gradient(deg, color1, color2, ...): 그라데이션 
+				deg : 그라데이션 방향(각도) 지정
+				*/
+				background: linear-gradient(150deg, red, orange, yellow, green, indigo, purple, black);
+			}
+			h1{
+				color: #fff;
+			}
+			.progress{
+				/*position: fixed > 화면내 절대위치값*/
+				position: fixed;
+				width: 100%;
+				height: 5px;
+				top: 0;
+				left: 0;
+				background-color: black;
+				z-index: 10;
+			}
+			.bar{
+				position: absolute;
+				width: 100%;
+				height: 5px;
+				top: 0;
+				left: 0;
+				background: yellow;
+				z-index: 11;
+			}
+		</style>
+		<script>
+			let scrollTop = 0;
+			let bar;
+			
+			window.onload = function(){
+				bar = document.getElementsByClassName("bar")[0];
+			}
+			
+			window.addEventListener("scroll", function(){
+				scrollTop = document.documentElement.scrollTop;
+				// 가로 퍼센트값 = 현재 스크롤 탑 위치 / (문서 전체 길이 - 윈도우 창 높이 ) * 100;
+				// 윈도우 창 높이 빼는 이유 : 화면 끝에 도달해도 100% 달성이 안되기 때문에
+				// Math.ceil : 반올림
+				let per = Math.ceil(scrollTop / (document.body.scrollHeight) * 100);
+				
+				bar.style.width = per + "%";
+				
+			}, false)
+			
+		</script>
+	</head>
+	<body>
+		<h1>스크롤</h1>
+		<div class="progress">
+			<span class="bar"></span>
+		</div>
+	</body>
+</html>

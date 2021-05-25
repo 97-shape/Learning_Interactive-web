@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>스크롤</title>
+		<meta http-equiv="content-type" content="text/html; charset=utp-8"/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-witdh, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<style>
+			body{
+				height: 10000px;
+				/*
+				linear-gradient(deg, color1, color2, ...): 그라데이션 
+				deg : 그라데이션 방향(각도) 지정
+				*/
+				background: linear-gradient(150deg, red, orange, yellow, green, indigo, purple, black);
+			}
+			h1{
+				color: #fff;
+			}
+		</style>
+		<script>
+			let scrollTop = 0;
+			
+			window.addEventListener("scroll", function(){
+				scrollTop = document.documentElement.scrollTop;
+				console.log(scrollTop)
+			}, false)
+			
+		</script>
+	</head>
+	<body>
+		<h1>스크롤</h1>
+	</body>
+</html>
